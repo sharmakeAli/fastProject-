@@ -1,8 +1,7 @@
 package com.example.fastProject.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
@@ -10,12 +9,17 @@ public class HelloController {
     public String hello(){
         return "Hello, Spring Boot!";
     }
+   // @GetMapping("/hello")
+    @RequestMapping(value ="/hello",method = RequestMethod.GET)
+    public String getHello(){
+
+        return "Hello, Spring Boot!";
+    }
     @GetMapping("/{name}")
+  //  @RequestMapping(value ="/{name}",method = RequestMethod.GET)
+
     public String getName(@PathVariable String name){
         return "Hello, "+ name;
     }
-    @GetMapping("/hello")
-    public String getHello(@PathVariable String name){
-        return "Hello, Spring Boot!"+ name;
-    }
+
 }
